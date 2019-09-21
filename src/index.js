@@ -182,7 +182,14 @@ function checkWin(player) {
 }
 
 function win(player) {
-  alert("Player " + player + " won!");
+  var winner;
+  if (player === "O") {
+    winner = 2;
+  }
+  if (player === "X") {
+    winner = 1;
+  }
+  alert("Player " + winner + " won!");
   newGame();
 }
 
