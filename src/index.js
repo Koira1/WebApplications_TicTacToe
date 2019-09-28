@@ -230,6 +230,7 @@ function newGame() {
     table[i].className = "cell";
   }
   counter = 0;
+  clicks = 0;
 }
 
 function Draw() {
