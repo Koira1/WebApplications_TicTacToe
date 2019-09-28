@@ -90,7 +90,7 @@ function click(tpoyta) {
 
 function pelaaja(player) {
   var pela = document.getElementById("pelaaja");
-  pela.innerHTML = "Pelaaja " + player;
+  //pela.innerHTML = "Pelaaja " + player;
 }
 
 function setPlayer(counter) {
