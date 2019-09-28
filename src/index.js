@@ -41,9 +41,9 @@ function ajastin() {
 
 function luoPoyta() {
   var poyta = document.getElementById("myTable");
-  poyta.setAttribute("border", "1");
-  poyta.setAttribute("width", "500");
-  poyta.setAttribute("height", "500");
+  //poyta.setAttribute("border", "1");
+  //poyta.setAttribute("width", "500");
+  //poyta.setAttribute("height", "500");
   var tpoyta = document.createElement("tbody");
   for (var i = 0; i < size; i++) {
     var rivi = document.createElement("tr");
