@@ -11,7 +11,7 @@ td {
 
 .cell {
   width: 60px;
-  height: 60px;
+  height: 59px;
   text-align: center;
   vertical-align: center;
 }
@@ -19,7 +19,7 @@ td {
 .cell_x {
   background-color: rgb(124, 252, 0);
   width: 60px;
-  height: 60px;
+  height: 59px;
   text-align: center;
   vertical-align: center;
   font-family: Helvetica;
@@ -30,7 +30,7 @@ td {
   background-color: rgb(250, 128, 114);
   font-family: Helvetica;
   width: 60px;
-  height: 60px;
+  height: 59px;
   text-align: center;
   vertical-align: center;
   font-size: 30px;
