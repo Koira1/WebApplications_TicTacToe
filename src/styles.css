@@ -1,3 +1,35 @@
 body {
   font-family: sans-serif;
 }
+
+.table {
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.cell_x {
+  background-color: rgb(124, 252, 0);
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: center;
+  font-family: Helvetica;
+  font-size: 30px;
+}
+
+.cell_y {
+  background-color: rgb(250, 128, 114);
+  font-family: Helvetica;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  vertical-align: center;
+  font-size: 30px;
+}

@@ -1,27 +1,43 @@
+import { debuglog } from "util";
+
 var size = 5;
 var counter = 0;
 var counter1 = 0;
 var table = [];
+var clicks = 0;
 var EMPTY = "&nbsp";
 var vuoro = {
   x: "X",
   y: "O"
 };
-var winConditions = [
-  [0, 1, 2, 3, 4],
-  [5, 6, 7, 8, 9],
-  [10, 11, 12, 13, 14],
-  [15, 16, 17, 18, 19],
-  [20, 21, 22, 23, 24],
-  [0, 5, 10, 15, 20],
-  [1, 6, 11, 16, 21],
-  [2, 7, 12, 17, 22],
-  [3, 8, 13, 18, 23],
-  [4, 9, 14, 19, 24],
-  [4, 8, 12, 16, 20],
-  [0, 6, 12, 18, 24]
-];
+var vuorovaihtuu = false;
+var player = setPlayer(counter);
+
 luoPoyta();
+
+function ajastin() {
+  var elem = document.getElementById("myBar");
+  var width = 100;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (width === 0) {
+      counter++;
+      player = setPlayer(counter);
+      pelaaja(player);
+      clearInterval(id);
+      ajastin();
+    } else {
+      width--;
+      elem.style.width = width + "%";
+      elem.innerHTML = width / 10;
+      if (vuorovaihtuu) {
+        clearInterval(id);
+        ajastin();
+        vuorovaihtuu = false;
+      }
+    }
+  }
+}
 
 function luoPoyta() {
   var poyta = document.getElementById("myTable");
@@ -33,6 +49,7 @@ function luoPoyta() {
     var rivi = document.createElement("tr");
     for (var j = 0; j < size; j++) {
       var lokero = document.createElement("td");
+      lokero.className = "cell";
       table[counter1] = lokero;
       counter1++;
       rivi.appendChild(lokero);
@@ -40,7 +57,9 @@ function luoPoyta() {
     tpoyta.appendChild(rivi);
   }
   poyta.appendChild(tpoyta);
+  pelaaja(player);
   click(tpoyta);
+  ajastin();
 }
 
 function click(tpoyta) {
@@ -48,18 +67,30 @@ function click(tpoyta) {
     if (e.target.innerHTML === "X" || e.target.innerHTML === "O") {
       return;
     }
-    var player = setPlayer(counter);
+    pelaaja(player);
+    player = setPlayer(counter);
     counter++;
     e.target.innerHTML = player;
-    e.target.setAttribute("align", "center");
-    if (counter === size * size) {
+    if (player === vuoro.x) {
+      e.target.className = "cell_x";
+    } else {
+      e.target.className = "cell_y";
+    }
+    clicks++;
+    if (clicks === size * size) {
       Draw();
     }
+    vuorovaihtuu = true;
     var winTrue = checkWin(player);
     if (winTrue) {
       win(player);
     }
   });
+}
+
+function pelaaja(player) {
+  var pela = document.getElementById("pelaaja");
+  pela.innerHTML = "Pelaaja " + player;
 }
 
 function setPlayer(counter) {
@@ -196,6 +227,7 @@ function win(player) {
 function newGame() {
   for (var i = 0; i < table.length; i++) {
     table[i].innerHTML = EMPTY;
+    table[i].className = "cell";
   }
   counter = 0;
 }
