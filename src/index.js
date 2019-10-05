@@ -16,7 +16,7 @@ luoPoyta();
 function ajastin() {
   var elem = document.getElementById("myBar");
   var width = 100;
-  var id = setInterval(frame, 50);
+  var id = setInterval(frame, 200);
   function frame() {
     if (width === 0) {
       counter++;
