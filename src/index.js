@@ -1,6 +1,3 @@
-import { debuglog } from "util";
-import { SSL_OP_EPHEMERAL_RSA } from "constants";
-
 var size = 5;
 var counter = 0;
 var counter1 = 0;
@@ -19,7 +16,7 @@ luoPoyta();
 function ajastin() {
   var elem = document.getElementById("myBar");
   var width = 100;
-  var id = setInterval(frame, 100);
+  var id = setInterval(frame, 50);
   function frame() {
     if (width === 0) {
       counter++;
