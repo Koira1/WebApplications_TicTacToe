@@ -1,4 +1,5 @@
 import { debuglog } from "util";
+import { SSL_OP_EPHEMERAL_RSA } from "constants";
 
 var size = 5;
 var counter = 0;
@@ -78,7 +79,9 @@ function click(tpoyta) {
     }
     clicks++;
     if (clicks === size * size) {
-      Draw();
+      setTimeout(function() {
+        Draw();
+      }, 500);
     }
     vuorovaihtuu = true;
     var winTrue = checkWin(player);
