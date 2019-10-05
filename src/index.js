@@ -16,7 +16,7 @@ luoPoyta();
 function ajastin() {
   var elem = document.getElementById("myBar");
   var width = 100;
-  var id = setInterval(frame, 120);
+  var id = setInterval(frame, 100);
   function frame() {
     if (width === 0) {
       counter++;
@@ -57,13 +57,15 @@ function luoPoyta() {
   poyta.appendChild(tpoyta);
   pelaaja(player);
   click(tpoyta);
-  ajastin();
 }
 
 function click(tpoyta) {
   tpoyta.addEventListener("click", function(e) {
     if (e.target.innerHTML === "x" || e.target.innerHTML === "o") {
       return;
+    }
+    if (counter === 0) {
+      ajastin();
     }
     pelaaja(player);
     player = setPlayer(counter);
