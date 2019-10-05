@@ -8,8 +8,8 @@ var table = [];
 var clicks = 0;
 var EMPTY = "&nbsp";
 var vuoro = {
-  x: "X",
-  y: "O"
+  x: "x",
+  y: "o"
 };
 var vuorovaihtuu = false;
 var player = setPlayer(counter);
@@ -65,7 +65,7 @@ function luoPoyta() {
 
 function click(tpoyta) {
   tpoyta.addEventListener("click", function(e) {
-    if (e.target.innerHTML === "X" || e.target.innerHTML === "O") {
+    if (e.target.innerHTML === "x" || e.target.innerHTML === "o") {
       return;
     }
     pelaaja(player);
@@ -78,15 +78,15 @@ function click(tpoyta) {
       e.target.className = "cell_y";
     }
     clicks++;
-    if (clicks === size * size) {
-      setTimeout(function() {
-        Draw();
-      }, 500);
-    }
     vuorovaihtuu = true;
     var winTrue = checkWin(player);
     if (winTrue) {
       win(player);
+    }
+    if (clicks === size * size) {
+      setTimeout(function() {
+        Draw();
+      }, 500);
     }
   });
 }
@@ -217,10 +217,10 @@ function checkWin(player) {
 
 function win(player) {
   var winner;
-  if (player === "O") {
+  if (player === "o") {
     winner = 2;
   }
-  if (player === "X") {
+  if (player === "x") {
     winner = 1;
   }
   alert("Player " + winner + " won!");
